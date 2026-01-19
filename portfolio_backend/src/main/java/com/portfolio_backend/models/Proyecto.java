@@ -1,9 +1,6 @@
 package com.portfolio_backend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,5 +15,9 @@ public class Proyecto {
     private String imagen;
     private String github;
     private String liveDemo;
+    @Column(length = 500) // Le damos espacio para texto largo
+    private String descripcion;
+
+    private String stack;
 
 }

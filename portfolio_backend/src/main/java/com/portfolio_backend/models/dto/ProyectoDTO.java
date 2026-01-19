@@ -10,5 +10,7 @@ public class ProyectoDTO {
     private MultipartFile imagen;
     private String github;
     private String liveDemo;
+    private String descripcion;
+    private String stack;
 
 }

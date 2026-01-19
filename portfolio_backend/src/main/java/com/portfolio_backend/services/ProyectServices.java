@@ -27,6 +27,8 @@ public class ProyectServices implements IProyectService {
         proyecto.setNombre(proyectoDTO.getNombre());
         proyecto.setGithub(proyectoDTO.getGithub());
         proyecto.setLiveDemo(proyectoDTO.getLiveDemo());
+        proyecto.setDescripcion(proyectoDTO.getDescripcion());
+        proyecto.setStack(proyectoDTO.getStack());
 
         // 2. Validamos si viene imagen y la subimos
         if(proyectoDTO.getImagen() != null && !proyectoDTO.getImagen().isEmpty()){
@@ -59,6 +61,12 @@ public class ProyectServices implements IProyectService {
         proyecto.setNombre(proyectoDTO.getNombre());
         proyecto.setGithub(proyectoDTO.getGithub());
         proyecto.setLiveDemo(proyectoDTO.getLiveDemo());
+        if(proyectoDTO.getDescripcion() != null) {
+            proyecto.setDescripcion(proyectoDTO.getDescripcion());
+        }
+        if(proyectoDTO.getStack() != null) {
+            proyecto.setStack(proyectoDTO.getStack());
+        }
 
         // 3. Lógica de la imagen:
         // Solo si el usuario envía un archivo nuevo, lo subimos y actualizamos la URL.
