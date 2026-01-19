@@ -1,0 +1,9 @@
+package com.portfolio_backend.repository;
+
+import com.portfolio_backend.models.Proyecto;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProyectRepository extends JpaRepository<Proyecto,Long> {
+}
