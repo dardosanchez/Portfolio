@@ -1,4 +1,4 @@
-/* GENERAL */
+
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
@@ -19,14 +19,14 @@ p {
   color: rgb(85, 85, 85);
 }
 
-/* TRANSITION */
+
 
 a,
 .btn {
   transition: all 300ms ease;
 }
 
-/* DESKTOP NAV */
+
 
 nav,
 .nav-links {
@@ -66,7 +66,7 @@ a:hover {
   cursor: default;
 }
 
-/* HAMBURGER MENU */
+
 
 #hamburger-nav {
   display: none;
@@ -146,7 +146,7 @@ a:hover {
   transform: none;
 }
 
-/* SECTIONS */
+
 
 section {
   padding-top: 4vh;
@@ -160,7 +160,7 @@ section {
   display: flex;
 }
 
-/* PROFILE SECTION */
+
 
 #profile {
   display: flex;
@@ -206,14 +206,14 @@ section {
   gap: 1rem;
 }
 
-/* ICONS */
+
 
 .icon {
   cursor: pointer;
   height: 2rem;
 }
 
-/* BUTTONS */
+
 
 .btn-container {
   display: flex;
@@ -261,7 +261,7 @@ section {
   gap: 1rem;
 }
 
-/* ABOUT SECTION */
+
 
 #about {
   position: relative;
@@ -271,10 +271,10 @@ section {
   gap: 2rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
-  /* AGREGÁ ESTO: */
+  
   display: flex;
-  flex-wrap: wrap; /* Permite que los elementos bajen si no hay espacio */
-  justify-content: center; /* Centra las cartas si quedan impares */
+  flex-wrap: wrap; 
+  justify-content: center; 
 }
 .about-details-container {
   justify-content: center;
@@ -304,8 +304,7 @@ section {
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   text-align: center;
-  /* AGREGÁ ESTO: */
-  min-width: 250px; /* Esto fuerza a que la carta baje si no tiene al menos 250px de espacio */
+  min-width: 250px; 
 }
 
 .section-container {
@@ -319,7 +318,7 @@ section {
   margin: auto 0;
 }
 
-/* EXPERIENCE SECTION */
+
 
 #experience {
   position: relative;
@@ -339,23 +338,23 @@ section {
 }
 
 .article-container {
-  display: grid; /* Usamos Grid en vez de Flex */
-  grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño exacto */
-  column-gap: 2rem; /* Espacio horizontal entre columnas */
-  row-gap: 2rem;    /* Espacio vertical entre filas */
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  column-gap: 2rem; 
+  row-gap: 2rem;    
   width: 100%;
-  text-align: left; /* Alineamos el texto a la izquierda para que se vea ordenado */
+  text-align: left; 
 }
 
 article {
   display: flex;
-  width: auto; /* Dejamos que el ancho lo controle el Grid */
-  justify-content: flex-start; /* Todo alineado al inicio (izquierda) */
+  width: auto; 
+  justify-content: flex-start; 
   gap: 0.8rem;
-  align-items: flex-start; /* Icono alineado arriba si el texto es largo */
+  align-items: flex-start; 
 }
 
-/* Ajuste opcional para que el texto dentro del artículo se vea mejor */
+
 article div {
     display: flex;
     flex-direction: column;
@@ -363,14 +362,14 @@ article div {
 }
 
 article h3 {
-    font-size: 1rem; /* Un pelín más chico para que entren nombres largos */
+    font-size: 1rem; 
 }
 
 article .icon {
   cursor: default;
 }
 
-/* PROJECTS SECTION */
+
 
 #projects {
   position: relative;
@@ -380,10 +379,10 @@ article .icon {
   border-color: rgb(163, 163, 163);
   background: rgb(250, 250, 250);
   
-  /* --- AGREGÁ ESTO PARA EL ARREGLO --- */
-  flex-grow: 0;      /* Le decimos: "No te estires obligatoriamente" */
-  width: 30%;        /* Intentá ocupar un tercio del ancho (para que entren 3) */
-  min-width: 300px;  /* Pero nunca seas más chica que 300px */
+  
+  flex-grow: 0;     
+  width: 30%;        
+  min-width: 300px;  
 }
 .text-container {
   text-align: justify;
@@ -405,7 +404,7 @@ article .icon {
   border-color: rgb(163, 163, 163);
 }
 
-/* CONTACT */
+
 
 #contact {
   display: flex;
@@ -445,7 +444,7 @@ article .icon {
   height: 2.5rem;
 }
 
-/* FOOTER SECTION */
+
 
 footer {
   height: 26vh;
@@ -458,33 +457,31 @@ footer p {
 
 
 .foto {
-  border-radius: 50%; /* Hace que los bordes se redondeen a la mitad del tamaño del elemento */
-  width: 200px; /* Ancho de la imagen */
-  height: 200px; /* Alto de la imagen */
+  border-radius: 50%;
+  width: 200px; 
+  height: 200px; 
 }
 
 
-/* --- ARREGLO ESPECÍFICO PARA LA IMAGEN DE PROYECTOS --- */
 
-/* Esto sobreescribe la regla de Grid solo para los proyectos */
 .color-container .article-container {
-  display: flex;             /* Volvemos a Flexbox */
-  justify-content: center;   /* Centramos la imagen horizontalmente */
-  align-items: center;       /* Centramos verticalmente */
-  width: 100%;               /* Que ocupe todo el ancho */
-  margin: 0 auto;            /* Aseguramos el centro */
+  display: flex;             
+  justify-content: center;   
+  align-items: center;     
+  width: 100%;              
+  margin: 0 auto;            
 }
 
 
 .project-stack {
-  font-size: 0.9rem;       /* Un poco más chico que el texto normal */
-  color: rgb(85, 85, 85);  /* Gris oscuro */
-  margin-bottom: 1rem;     /* Espacio antes de los botones */
-  line-height: 1.5;        /* Para que no se vea amontonado si son 2 líneas */
-  text-align: center;      /* Centrado */
+  font-size: 0.9rem;      
+  color: rgb(85, 85, 85);  
+  margin-bottom: 1rem;    
+  line-height: 1.5;       
+  text-align: center;     
 }
 
 .project-stack b {
-  color: black;            /* La palabra "Stack:" más oscura */
+  color: black;            
   font-weight: 600;
 }

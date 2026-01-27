@@ -87,12 +87,10 @@
     text-align: center;
   }
   .section__pic-container {
-    /* ANTES DECÍA: width: auto; height: 46vw; */
-    
-    /* CAMBIALO POR ESTO: */
-    width: 250px;   /* Un ancho fijo que se ve bien en todos los celulares */
-    height: 250px;  /* Alto igual para que sea cuadrada */
-    margin: 0 auto 2rem; /* Centrado horizontalmente y con espacio abajo */
+   
+    width: 250px;   
+    height: 250px;  
+    margin: 0 auto 2rem;
   }
   .section__text__p2 {
     font-size: 1.25rem;
@@ -104,45 +102,43 @@
     text-align: justify;
   }
   
-  /* --- CAMBIOS NUEVOS PARA CELULAR --- */
   
-  /* 1. Ajuste de altura automática para que no se corten los proyectos */
   section {
     height: auto;
     min-height: 100vh;
-    margin: 0 1rem; /* Margen más chico a los costados para tener más espacio */
+    margin: 0 1rem; 
     margin-bottom: 4rem;
   }
 
-  /* 2. Ajuste para las imágenes de los proyectos en pantallas chicas */
+  
   .project-img {
     height: auto;
     width: 100%;
   }
 
-  /* --- ARREGLO PARA QUE LAS HABILIDADES ENTREN EN LA CARTA --- */
+
   
   .details-container {
-    padding: 1rem 0.5rem; /* Reducimos el relleno (padding) de la tarjeta blanca */
-    width: 95%; /* Aseguramos que la tarjeta ocupe casi todo el ancho disponible */
-    margin: 0 auto; /* Centramos la tarjeta */
+    padding: 1rem 0.5rem; 
+    width: 95%; 
+    margin: 0 auto; 
   }
 
   .article-container {
-    column-gap: 0.5rem; /* Juntamos las columnas (antes era 2rem) */
-    text-align: left; /* Aseguramos alineación izquierda */
+    column-gap: 0.5rem;
+    text-align: left; 
   }
 
   article {
-    width: 100%; /* Que el artículo ocupe su espacio de la grilla */
-    gap: 0.5rem; /* Acercamos el icono al texto */
+    width: 100%;
+    gap: 0.5rem;
   }
 
   article h3 {
-    font-size: 0.9rem; /* Achicamos un pelín el nombre de la habilidad (ej. Spring Boot) */
+    font-size: 0.9rem; 
   }
   
   article p {
-    font-size: 0.8rem; /* Achicamos el texto "Avanzado/Intermedio" */
+    font-size: 0.8rem;
   }
 }

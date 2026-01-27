@@ -7,17 +7,16 @@ const About = ({ data }) => {
       <h1 className="title">Sobre mí</h1>
       <div className="section-container">
         <div className="section__pic-container">
-          {/* Foto de Cloudinary para el About */}
-          <img 
-            src={data.imageAbout} 
-            alt="Profile picture" 
-            className="about-pic" 
+
+          <img
+            src={data.imageAbout}
+            alt="Profile picture"
+            className="about-pic"
           />
         </div>
-        
-        {/* ... El resto de los cuadros de Experiencia/Educación queda igual ... */}
-        {/* (Copiá y pegá el contenido interno que ya tenías acá abajo) */}
-        
+
+
+
         <div className="about-details-container">
           <div className="about-containers">
             <div className="details-container">
@@ -33,13 +32,14 @@ const About = ({ data }) => {
           </div>
           <div className="text-container">
             <p>
-              Soy estudiante de Ingeniería en Sistemas y Desarrollador Backend apasionado por la arquitectura de software. 
-              Mi especialidad es construir APIs robustas usando <b>Java y Spring Boot</b>.
+              Soy estudiante de Ingeniería en Sistemas y Desarrollador Full Stack.
+              Mi especialidad es construir arquitecturas escalables y APIs robustas con <b>Java y Spring Boot</b>,
+              integrándolas con interfaces dinámicas y modernas en <b>React</b>.
             </p>
           </div>
         </div>
       </div>
-      <img src="/assets/arrow.png" alt="Arrow icon" className="icon arrow" onClick={() => location.href='./#experience'} />
+      <img src="/assets/arrow.png" alt="Arrow icon" className="icon arrow" onClick={() => location.href = './#experience'} />
     </section>
   );
 };

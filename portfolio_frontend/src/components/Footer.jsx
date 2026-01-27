@@ -13,7 +13,7 @@ const Footer = ({ data }) => {
           </ul>
         </div>
       </nav>
-      <p>Copyright &#169; 2026 {data.name}. Todos los derechos reservados.</p>
+      <p>Copyright &#169; 2026 {data.name}</p>
     </footer>
   );
 };

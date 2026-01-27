@@ -13,11 +13,10 @@ function App() {
   const [perfil, setPerfil] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8080/profile/all')
+    fetch('https://backend-portfolio-wxt6.onrender.com/profile/all')
       .then(res => res.json())
       .then(data => {
-        // IMPORTANTE: Como el backend devuelve una lista [ {Obj} ], 
-        // agarramos el primero (posición 0).
+       
         if (data && data.length > 0) {
           setPerfil(data[0]);
         }
@@ -25,13 +24,13 @@ function App() {
       .catch(err => console.error("Error cargando perfil:", err));
   }, []);
 
-  // Mientras carga, mostramos un mensajito simple o nada
+  
   if (!perfil) return <div style={{textAlign:'center', marginTop:'20%'}}>Cargando perfil...</div>;
 
   return (
     <div className="App">
       <Navbar />
-      {/* Pasamos 'perfil' a los componentes que necesitan datos dinámicos */}
+      
       <Hero data={perfil} />
       <About data={perfil} />
       <Experience /> 
