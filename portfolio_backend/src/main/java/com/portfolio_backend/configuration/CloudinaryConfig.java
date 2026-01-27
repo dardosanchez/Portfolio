@@ -1,7 +1,6 @@
 package com.portfolio_backend.configuration;
 
 import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,6 @@ import java.util.Map;
 @Configuration
 public class CloudinaryConfig {
 
-    // Le decimos a Spring: "Andá a buscar este valor al archivo de configuración"
     @Value("${cloudinary.cloud_name}")
     private String cloudName;
 

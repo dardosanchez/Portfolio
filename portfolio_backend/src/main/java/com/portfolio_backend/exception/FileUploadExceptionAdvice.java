@@ -16,13 +16,6 @@ public class FileUploadExceptionAdvice {
     public ResponseEntity<Response> handleMaxSizeException(MaxUploadSizeExceededException ex){
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Response("Verifica el tamaño del archivo"));
     }
-    /*
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Response> handleException(Exception ex){
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Response("Ocurrio un problema"));
-    }
-    */
-
 
     @ExceptionHandler(FileAlreadyExistsException.class)
     public ResponseEntity<Response> FileAlreadyExistsException(FileAlreadyExistsException ex){

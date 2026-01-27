@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/email")
-@CrossOrigin(value = "http://localhost:5173")
+@CrossOrigin(value = "*")
 public class EmailController {
 
     @Autowired

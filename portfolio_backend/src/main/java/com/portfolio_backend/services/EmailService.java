@@ -26,7 +26,6 @@ public class EmailService {
         try {
             return sendEmail(emailDto);
         } catch (MessagingException e) {
-            // Puedes manejar excepciones específicas si ocurren problemas durante el envío del correo
             throw new MessagingException("Error sending query", e);
         }
     }

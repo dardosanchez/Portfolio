@@ -9,17 +9,14 @@ import java.io.IOException;
 import java.util.Map;
 
 @Service
-public class FileServices implements IFileService { // Asegurate que tu interfaz coincida o ajustala
+public class FileServices implements IFileService {
 
     @Autowired
     private Cloudinary cloudinary;
 
-    // Ya no devuelvo void, devuelvo String (la URL de la imagen)
-    public String save(MultipartFile file) throws IOException {
-        // Map de opciones (podés configurar tamaño, formato, etc. acá si querés)
-        Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 
-        // Retornamos la URL segura que nos da Cloudinary
+    public String save(MultipartFile file) throws IOException {
+        Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
         return uploadResult.get("url").toString();
     }
 }

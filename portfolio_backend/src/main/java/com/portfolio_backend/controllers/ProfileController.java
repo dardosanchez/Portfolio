@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/profile")
-@CrossOrigin(value = "http://localhost:5173")
+@CrossOrigin(value = "*")
 public class ProfileController {
 
     @Autowired

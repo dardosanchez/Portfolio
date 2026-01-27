@@ -9,13 +9,13 @@ import lombok.Setter;
 @Setter
 public class Proyecto {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String imagen;
     private String github;
     private String liveDemo;
-    @Column(length = 500) // Le damos espacio para texto largo
+    @Column(length = 500)
     private String descripcion;
 
     private String stack;

@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/file")
-@CrossOrigin(value = "http://localhost:5173") // Acordate de la configuración global de CORS más adelante
+@CrossOrigin(value = "*")
 public class FileController {
 
     @Autowired
@@ -23,12 +23,9 @@ public class FileController {
         Map<String, String> response = new HashMap<>();
 
         try {
-            // Usamos el servicio que ahora devuelve la URL de Cloudinary
             String url = fileServices.save(file);
-
             response.put("message", "Archivo subido correctamente");
-            response.put("url", url); // Devolvemos la URL para que el front la pueda ver
-
+            response.put("url", url);
             return ResponseEntity.status(HttpStatus.OK).body(response);
 
         } catch (Exception e) {
