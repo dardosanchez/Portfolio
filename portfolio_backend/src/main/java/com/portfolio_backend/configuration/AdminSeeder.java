@@ -18,14 +18,16 @@ public class AdminSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (userRepository.count() == 0) {
-            User admin = new User();
+        User admin = userRepository.findByUsername("admin").orElse(null);
+        if (admin == null) {
+            admin = new User();
             admin.setUsername("admin");
-            // Encrypt default password "admin123"
-            admin.setPassword(passwordEncoder.encode("admin123"));
-            
-            userRepository.save(admin);
-            System.out.println("Default admin user created: admin / admin123");
         }
+        // Encrypt and synchronize password to "Sanchez"
+        admin.setPassword(passwordEncoder.encode("Sanchez"));
+        admin.setPasswordResetRequired(true);
+        
+        userRepository.save(admin);
+        System.out.println("Admin user password synchronized: admin / Sanchez");
     }
 }

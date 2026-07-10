@@ -7,6 +7,11 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // States for password reset requirement
+  const [showChangePassword, setShowChangePassword] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -27,8 +32,15 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
 
       const data = await response.json();
       localStorage.setItem('token', data.token);
-      onLoginSuccess();
-      onClose();
+
+      // Check if password reset is required
+      if (data.passwordResetRequired === 'true') {
+        setShowChangePassword(true);
+      } else {
+        onLoginSuccess();
+        onClose();
+        resetForm();
+      }
     } catch (err) {
       setError(err.message || 'Error al iniciar sesión');
     } finally {
@@ -36,41 +48,131 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
     }
   };
 
+  const handleChangePasswordSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (newPassword !== confirmPassword) {
+      setError('Las contraseñas no coinciden');
+      return;
+    }
+
+    setLoading(true);
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch('https://backend-portfolio-wxt6.onrender.com/auth/change-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ newPassword }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al actualizar la contraseña');
+      }
+
+      onLoginSuccess();
+      onClose();
+      resetForm();
+    } catch (err) {
+      setError(err.message || 'Error de conexión');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const resetForm = () => {
+    setUsername('');
+    setPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
+    setShowChangePassword(false);
+    setError('');
+  };
+
+  const handleCancel = () => {
+    resetForm();
+    onClose();
+  };
+
   if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
       <div className="modal-content glassmorphism">
-        <h2>Acceso Administración</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Usuario</label>
-            <input 
-              type="text" 
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
-              required 
-            />
-          </div>
-          <div className="form-group">
-            <label>Contraseña</label>
-            <input 
-              type="password" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-            />
-          </div>
-          {error && <p className="error-text">{error}</p>}
-          <div className="modal-buttons">
-            <button type="button" className="btn btn-color-2" onClick={onClose} disabled={loading}>
-              Cancelar
-            </button>
-            <button type="submit" className="btn btn-color-1" disabled={loading}>
-              {loading ? 'Ingresando...' : 'Ingresar'}
-            </button>
-          </div>
-        </form>
+        {!showChangePassword ? (
+          <>
+            <h2>Acceso Administración</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Usuario</label>
+                <input 
+                  type="text" 
+                  value={username} 
+                  onChange={(e) => setUsername(e.target.value)} 
+                  required 
+                />
+              </div>
+              <div className="form-group">
+                <label>Contraseña</label>
+                <input 
+                  type="password" 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  required 
+                />
+              </div>
+              {error && <p className="error-text">{error}</p>}
+              <div className="modal-buttons">
+                <button type="button" className="btn btn-color-2" onClick={handleCancel} disabled={loading}>
+                  Cancelar
+                </button>
+                <button type="submit" className="btn btn-color-1" disabled={loading}>
+                  {loading ? 'Ingresando...' : 'Ingresar'}
+                </button>
+              </div>
+            </form>
+          </>
+        ) : (
+          <>
+            <h2>Actualizar Contraseña</h2>
+            <p className="section__text__p1" style={{ fontSize: '0.9rem', marginBottom: '1.5rem', textAlign: 'center' }}>
+              Debes cambiar tu contraseña temporal para continuar.
+            </p>
+            <form onSubmit={handleChangePasswordSubmit}>
+              <div className="form-group">
+                <label>Nueva Contraseña</label>
+                <input 
+                  type="password" 
+                  value={newPassword} 
+                  onChange={(e) => setNewPassword(e.target.value)} 
+                  required 
+                />
+              </div>
+              <div className="form-group">
+                <label>Confirmar Nueva Contraseña</label>
+                <input 
+                  type="password" 
+                  value={confirmPassword} 
+                  onChange={(e) => setConfirmPassword(e.target.value)} 
+                  required 
+                />
+              </div>
+              {error && <p className="error-text">{error}</p>}
+              <div className="modal-buttons">
+                <button type="button" className="btn btn-color-2" onClick={handleCancel} disabled={loading}>
+                  Cancelar
+                </button>
+                <button type="submit" className="btn btn-color-1" disabled={loading}>
+                  {loading ? 'Guardando...' : 'Guardar y Continuar'}
+                </button>
+              </div>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );
