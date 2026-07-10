@@ -1,16 +1,51 @@
-# React + Vite
+# 💻 Portfolio Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Capa cliente construida como una Single Page Application (SPA) responsiva, fluida y moderna, integrada con un panel de administración en tiempo real.**
 
-Currently, two official plugins are available:
+## 🛠️ Tecnologías y Herramientas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **React:** Para una arquitectura de componentes declarativa y reactiva.
+*   **Vite:** Herramienta de compilación ultrarrápida y entorno de desarrollo ágil con HMR (Hot Module Replacement).
+*   **CSS Vanilla & Media Queries:** Control total del diseño visual sin dependencias pesadas, logrando tiempos de carga ínfimos.
+*   **Fetch API:** Comunicación asíncrona con la API REST del Backend.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🔑 Características del Cliente
 
-## Expanding the ESLint configuration
+1.  **Panel de Control Inline (CMS):**
+    *   Subida de imágenes directo a Cloudinary mediante formularios multipart (`FormData`).
+    *   Gestión dinámica de proyectos (Crear, Editar, Eliminar) sin recargar la página.
+    *   Edición de la información de contacto y currículum.
+2.  **Autenticación JWT:**
+    *   Persistencia de sesión en el navegador mediante `localStorage`.
+    *   Envío del token JWT en la cabecera `Authorization: Bearer <token>` para todas las operaciones de escritura y eliminación.
+3.  **UI/UX Premium:**
+    *   Diseño responsivo con breakpoints específicos para móviles, tabletas y ordenadores portátiles.
+    *   Efecto de desenfoque de fondo (*glassmorphism*) en los modales para una estética premium.
+    *   Enlace discreto en el pie de página (`• Admin`) para alternar al modo editor.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Inicio Rápido (Desarrollo Local)
+
+### Requisitos Previos
+*   [Node.js](https://nodejs.org/) (Versión 18 o superior recomendada)
+
+### Instalación
+1. Entra a la carpeta del proyecto:
+   ```bash
+   cd portfolio_frontend
+   ```
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+3. Ejecuta el servidor de desarrollo local:
+   ```bash
+   npm run dev
+   ```
+4. Compila el proyecto para producción:
+   ```bash
+   npm run build
+   ```

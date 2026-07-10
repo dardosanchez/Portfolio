@@ -22,8 +22,15 @@ public class JwtTokenUtil implements Serializable {
     // Token validity duration (5 hours)
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
-    private final String secret = "dardoSanchezPortfolioJwtSecretKeyThatMustBeVeryLongToAvoidAnyErrorsWithJjwtApiHS256AlgorithmAndSecurity";
-    private final Key signingKey = Keys.hmacShaKeyFor(secret.getBytes());
+    @org.springframework.beans.factory.annotation.Value("${jwt.secret}")
+    private String secret;
+
+    private Key signingKey;
+
+    @jakarta.annotation.PostConstruct
+    public void init() {
+        this.signingKey = Keys.hmacShaKeyFor(secret.getBytes());
+    }
 
     // retrieve username from jwt token
     public String getUsernameFromToken(String token) {
