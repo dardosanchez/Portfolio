@@ -289,7 +289,6 @@ section {
 .about-pic {
   width: 100%;
   height: 100%;
-  max-width: 400px;
   object-fit: cover;
   border-radius: 2rem;
 }
@@ -324,9 +323,11 @@ section {
 }
 
 .section__pic-container {
+  display: flex;
   height: 400px;
   width: 400px;
   margin: auto 0;
+  flex-shrink: 0;
 }
 
 

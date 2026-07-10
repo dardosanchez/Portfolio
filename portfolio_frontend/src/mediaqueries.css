@@ -1,4 +1,7 @@
 @media screen and (max-width: 1400px) {
+  section {
+    margin: 0 5rem;
+  }
   #profile {
     height: 83vh;
     margin-bottom: 6rem;
