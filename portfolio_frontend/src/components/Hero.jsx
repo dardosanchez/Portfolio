@@ -1,11 +1,9 @@
-import React from 'react';
-
+import PropTypes from 'prop-types';
 
 const Hero = ({ data }) => {
   return (
     <section id="profile">
       <div className="section__pic-container">
-       
         <img 
             src={data.imagen} 
             alt={`${data.name} profile picture`} 
@@ -19,39 +17,55 @@ const Hero = ({ data }) => {
         <p className="section__text__p2">{data.cargo}</p>
         
         <div className="btn-container">
-          
-          <button 
-            className="btn btn-color-2" 
-            onClick={() => window.open(data.curriculum)}
+          <a 
+            href={data.curriculum} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn btn-color-2"
+            style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
           >
             Descargar CV
-          </button>
+          </a>
           
-          <button 
-            className="btn btn-color-1" 
-            onClick={() => location.href='./#contact'}
+          <a 
+            href="#contact" 
+            className="btn btn-color-1"
+            style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
           >
             Contacto
-          </button>
+          </a>
         </div>
 
         <div id="socials-container">
           <img 
             src="/assets/linkedin.png" 
-            alt="My LinkedIn profile" 
+            alt="LinkedIn" 
             className="icon"
             onClick={() => window.open(data.linkedin, '_blank')}
+            style={{ cursor: 'pointer' }}
           />
           <img 
             src="/assets/github.png" 
-            alt="My Github profile" 
+            alt="Github" 
             className="icon"
             onClick={() => window.open(data.github, '_blank')}
+            style={{ cursor: 'pointer' }}
           />
         </div>
       </div>
     </section>
   );
+};
+
+Hero.propTypes = {
+  data: PropTypes.shape({
+    imagen: PropTypes.string,
+    name: PropTypes.string,
+    cargo: PropTypes.string,
+    curriculum: PropTypes.string,
+    linkedin: PropTypes.string,
+    github: PropTypes.string
+  }).isRequired
 };
 
 export default Hero;

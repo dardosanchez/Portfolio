@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const Footer = ({ data }) => {
   return (
@@ -16,6 +16,12 @@ const Footer = ({ data }) => {
       <p>Copyright &#169; 2026 {data.name}</p>
     </footer>
   );
+};
+
+Footer.propTypes = {
+  data: PropTypes.shape({
+    name: PropTypes.string
+  }).isRequired
 };
 
 export default Footer;

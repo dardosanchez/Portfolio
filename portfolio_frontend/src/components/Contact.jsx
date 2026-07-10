@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const Contact = ({ data }) => {
   return (
@@ -17,6 +17,13 @@ const Contact = ({ data }) => {
       </div>
     </section>
   );
+};
+
+Contact.propTypes = {
+  data: PropTypes.shape({
+    email: PropTypes.string,
+    linkedin: PropTypes.string
+  }).isRequired
 };
 
 export default Contact;

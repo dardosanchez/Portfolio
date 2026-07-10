@@ -124,6 +124,11 @@
     margin: 0 auto; 
   }
 
+  .color-container {
+    min-width: unset;
+    width: 100%;
+  }
+
   .article-container {
     column-gap: 0.5rem;
     text-align: left; 

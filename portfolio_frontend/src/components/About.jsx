@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const About = ({ data }) => {
   return (
@@ -7,15 +7,12 @@ const About = ({ data }) => {
       <h1 className="title">Sobre mí</h1>
       <div className="section-container">
         <div className="section__pic-container">
-
           <img
             src={data.imageAbout}
             alt="Profile picture"
             className="about-pic"
           />
         </div>
-
-
 
         <div className="about-details-container">
           <div className="about-containers">
@@ -42,6 +39,12 @@ const About = ({ data }) => {
       <img src="/assets/arrow.png" alt="Arrow icon" className="icon arrow" onClick={() => location.href = './#experience'} />
     </section>
   );
+};
+
+About.propTypes = {
+  data: PropTypes.shape({
+    imageAbout: PropTypes.string
+  }).isRequired
 };
 
 export default About;
