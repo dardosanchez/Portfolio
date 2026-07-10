@@ -17,6 +17,6 @@ public class FileServices implements IFileService {
 
     public String save(MultipartFile file) throws IOException {
         Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-        return uploadResult.get("url").toString();
+        return uploadResult.get("secure_url").toString();
     }
 }

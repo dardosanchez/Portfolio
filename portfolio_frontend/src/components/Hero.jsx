@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Hero = ({ data }) => {
+const Hero = ({ data, isAdmin, onEditProfile }) => {
   return (
     <section id="profile">
       <div className="section__pic-container">
@@ -34,6 +34,16 @@ const Hero = ({ data }) => {
           >
             Contacto
           </a>
+
+          {isAdmin && (
+            <button 
+              onClick={onEditProfile} 
+              className="btn btn-color-1 admin-edit-btn"
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: '#353535', color: '#white' }}
+            >
+              Editar Perfil
+            </button>
+          )}
         </div>
 
         <div id="socials-container">
@@ -65,7 +75,9 @@ Hero.propTypes = {
     curriculum: PropTypes.string,
     linkedin: PropTypes.string,
     github: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  isAdmin: PropTypes.bool,
+  onEditProfile: PropTypes.func,
 };
 
 export default Hero;

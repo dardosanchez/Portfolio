@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Footer = ({ data }) => {
+const Footer = ({ data, isAdmin, onLogout, onLoginClick }) => {
   return (
     <footer>
       <nav>
@@ -13,7 +13,25 @@ const Footer = ({ data }) => {
           </ul>
         </div>
       </nav>
-      <p>Copyright &#169; 2026 {data.name}</p>
+      <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '1rem', color: 'rgb(85, 85, 85)' }}>
+        Copyright &#169; 2026 {data.name} 
+        <span>•</span>
+        {isAdmin ? (
+          <span 
+            onClick={onLogout} 
+            style={{ cursor: 'pointer', textDecoration: 'underline' }}
+          >
+            Salir
+          </span>
+        ) : (
+          <span 
+            onClick={onLoginClick} 
+            style={{ cursor: 'pointer', textDecoration: 'underline' }}
+          >
+            Admin
+          </span>
+        )}
+      </p>
     </footer>
   );
 };
@@ -21,7 +39,10 @@ const Footer = ({ data }) => {
 Footer.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  isAdmin: PropTypes.bool,
+  onLogout: PropTypes.func,
+  onLoginClick: PropTypes.func,
 };
 
 export default Footer;

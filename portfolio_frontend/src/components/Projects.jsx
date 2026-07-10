@@ -1,10 +1,22 @@
 import PropTypes from 'prop-types';
 
-const Projects = ({ data }) => {
+const Projects = ({ data, isAdmin, onAddProject, onEditProject, onDeleteProject }) => {
   return (
     <section id="projects">
       <p className="section__text__p1">Explorá mis últimos</p>
-      <h1 className="title">Proyectos</h1>
+      <h1 className="title" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem' }}>
+        Proyectos
+        {isAdmin && (
+          <button 
+            onClick={onAddProject} 
+            className="btn btn-color-1" 
+            style={{ width: 'auto', padding: '0.6rem 1.2rem', fontSize: '1rem' }}
+          >
+            + Agregar
+          </button>
+        )}
+      </h1>
+      
       <div className="experience-details-container">
         <div className="about-containers">
           
@@ -44,6 +56,26 @@ const Projects = ({ data }) => {
                   Sitio Web
                 </button>
               </div>
+
+              {isAdmin && (
+                <div className="btn-container" style={{ marginTop: '1rem', borderTop: '1px solid #ccc', paddingTop: '1rem', width: '100%' }}>
+                  <button 
+                    className="btn btn-color-1" 
+                    style={{ width: '6rem', padding: '0.5rem', background: '#353535' }}
+                    onClick={() => onEditProject(proyecto)}
+                  >
+                    Editar
+                  </button>
+                  
+                  <button 
+                    className="btn btn-color-2" 
+                    style={{ width: '6rem', padding: '0.5rem', borderColor: '#ff4d4d', color: '#ff4d4d' }}
+                    onClick={() => onDeleteProject(proyecto.id)}
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              )}
             </div>
           ))}
 
@@ -51,13 +83,16 @@ const Projects = ({ data }) => {
 
         </div>
       </div>
-      <img src="/assets/arrow.png" alt="Arrow icon" className="icon arrow" onClick={() => location.href='./#contact'} />
     </section>
   );
 };
 
 Projects.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  isAdmin: PropTypes.bool,
+  onAddProject: PropTypes.func,
+  onEditProject: PropTypes.func,
+  onDeleteProject: PropTypes.func,
 };
 
 export default Projects;
