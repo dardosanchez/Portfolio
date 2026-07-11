@@ -30,17 +30,17 @@ public class ProfileServices implements IProfileService {
 
 
         if (isValidFile(profileDTO.getImagen())) {
-            String urlImagen = fileServices.save(profileDTO.getImagen());
+            String urlImagen = fileServices.save(profileDTO.getImagen(), "portfolio");
             perfil.setImagen(urlImagen);
         }
 
         if (isValidFile(profileDTO.getImageAbout())) {
-            String urlAbout = fileServices.save(profileDTO.getImageAbout());
+            String urlAbout = fileServices.save(profileDTO.getImageAbout(), "portfolio");
             perfil.setImageAbout(urlAbout);
         }
 
         if (isValidFile(profileDTO.getCurriculum())) {
-            String urlCv = fileServices.save(profileDTO.getCurriculum());
+            String urlCv = fileServices.save(profileDTO.getCurriculum(), "portfolio");
             perfil.setCurriculum(urlCv);
         }
 
@@ -78,17 +78,20 @@ public class ProfileServices implements IProfileService {
 
 
         if (isValidFile(profileDTO.getImagen())) {
-            String urlImagen = fileServices.save(profileDTO.getImagen());
+            fileServices.delete(perfil.getImagen());
+            String urlImagen = fileServices.save(profileDTO.getImagen(), "portfolio");
             perfil.setImagen(urlImagen);
         }
 
         if (isValidFile(profileDTO.getImageAbout())) {
-            String urlAbout = fileServices.save(profileDTO.getImageAbout());
+            fileServices.delete(perfil.getImageAbout());
+            String urlAbout = fileServices.save(profileDTO.getImageAbout(), "portfolio");
             perfil.setImageAbout(urlAbout);
         }
 
         if (isValidFile(profileDTO.getCurriculum())) {
-            String urlCv = fileServices.save(profileDTO.getCurriculum());
+            fileServices.delete(perfil.getCurriculum());
+            String urlCv = fileServices.save(profileDTO.getCurriculum(), "portfolio");
             perfil.setCurriculum(urlCv);
         }
 
@@ -97,6 +100,12 @@ public class ProfileServices implements IProfileService {
 
     @Override
     public String deleteProfile(Long id) {
+        Profile perfil = this.getProfile(id);
+        if (perfil != null) {
+            fileServices.delete(perfil.getImagen());
+            fileServices.delete(perfil.getImageAbout());
+            fileServices.delete(perfil.getCurriculum());
+        }
         repoProfile.deleteById(id);
         return "Perfil " + id + " eliminado correctamente";
     }

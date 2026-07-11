@@ -64,7 +64,7 @@ public class ProfileServicesTest {
         assertNotNull(result);
         assertEquals("Dardo Sanchez", result.getName());
         verify(repoProfile, times(1)).save(any(Profile.class));
-        verify(fileServices, never()).save(any());
+        verify(fileServices, never()).save(any(), anyString());
     }
 
     @Test
@@ -77,9 +77,9 @@ public class ProfileServicesTest {
         profileDTO.setImageAbout(aboutFile);
         profileDTO.setCurriculum(cvFile);
 
-        when(fileServices.save(imageFile)).thenReturn("http://cloudinary.com/new_profile.jpg");
-        when(fileServices.save(aboutFile)).thenReturn("http://cloudinary.com/new_about.jpg");
-        when(fileServices.save(cvFile)).thenReturn("http://cloudinary.com/new_cv.pdf");
+        when(fileServices.save(imageFile, "portfolio")).thenReturn("http://cloudinary.com/new_profile.jpg");
+        when(fileServices.save(aboutFile, "portfolio")).thenReturn("http://cloudinary.com/new_about.jpg");
+        when(fileServices.save(cvFile, "portfolio")).thenReturn("http://cloudinary.com/new_cv.pdf");
 
         when(repoProfile.save(any(Profile.class))).thenAnswer(invocation -> {
             Profile p = invocation.getArgument(0);
@@ -94,7 +94,7 @@ public class ProfileServicesTest {
         assertEquals("http://cloudinary.com/new_about.jpg", result.getImageAbout());
         assertEquals("http://cloudinary.com/new_cv.pdf", result.getCurriculum());
 
-        verify(fileServices, times(3)).save(any());
+        verify(fileServices, times(3)).save(any(), anyString());
         verify(repoProfile, times(1)).save(any(Profile.class));
     }
 

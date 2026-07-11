@@ -62,7 +62,7 @@ public class ProyectServicesTest {
         assertNotNull(result);
         assertEquals("Test Project", result.getNombre());
         verify(repoProyecto, times(1)).save(any(Proyecto.class));
-        verify(fileServices, never()).save(any());
+        verify(fileServices, never()).save(any(), anyString());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ProyectServicesTest {
         MockMultipartFile file = new MockMultipartFile("imagen", "test.jpg", "image/jpeg", "image".getBytes());
         proyectoDTO.setImagen(file);
 
-        when(fileServices.save(file)).thenReturn("http://cloudinary.com/new.jpg");
+        when(fileServices.save(file, "portfolio")).thenReturn("http://cloudinary.com/new.jpg");
         when(repoProyecto.save(any(Proyecto.class))).thenAnswer(invocation -> {
             Proyecto p = invocation.getArgument(0);
             p.setId(1L);
@@ -81,7 +81,7 @@ public class ProyectServicesTest {
 
         assertNotNull(result);
         assertEquals("http://cloudinary.com/new.jpg", result.getImagen());
-        verify(fileServices, times(1)).save(file);
+        verify(fileServices, times(1)).save(file, "portfolio");
         verify(repoProyecto, times(1)).save(any(Proyecto.class));
     }
 

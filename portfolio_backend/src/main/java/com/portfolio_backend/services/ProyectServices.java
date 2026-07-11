@@ -31,7 +31,7 @@ public class ProyectServices implements IProyectService {
 
 
         if(proyectoDTO.getImagen() != null && !proyectoDTO.getImagen().isEmpty()){
-            String urlImagen = fileServices.save(proyectoDTO.getImagen());
+            String urlImagen = fileServices.save(proyectoDTO.getImagen(), "portfolio");
             proyecto.setImagen(urlImagen);
         }
 
@@ -68,7 +68,8 @@ public class ProyectServices implements IProyectService {
         }
 
         if(proyectoDTO.getImagen() != null && !proyectoDTO.getImagen().isEmpty()){
-            String url = fileServices.save(proyectoDTO.getImagen());
+            fileServices.delete(proyecto.getImagen());
+            String url = fileServices.save(proyectoDTO.getImagen(), "portfolio");
             proyecto.setImagen(url);
         }
 
@@ -77,6 +78,10 @@ public class ProyectServices implements IProyectService {
 
     @Override
     public void deleteProyecto(Long id) {
+        Proyecto proyecto = this.getProyecto(id);
+        if (proyecto != null) {
+            fileServices.delete(proyecto.getImagen());
+        }
         repoProyecto.deleteById(id);
     }
 }

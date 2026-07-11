@@ -10,5 +10,7 @@ import java.util.stream.Stream;
 public interface IFileService {
 
     public String save(MultipartFile file) throws IOException;
+    public String save(MultipartFile file, String folder) throws IOException;
+    public void delete(String url);
 
 }
