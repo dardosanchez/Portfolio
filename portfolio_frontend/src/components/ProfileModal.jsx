@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { API_URL } from '../config';
 
 const ProfileModal = ({ isOpen, onClose, profileData, onUpdate }) => {
   const [name, setName] = useState('');
@@ -43,7 +44,7 @@ const ProfileModal = ({ isOpen, onClose, profileData, onUpdate }) => {
     if (curriculumFile) formData.append('curriculum', curriculumFile);
 
     try {
-      const response = await fetch(`https://backend-portfolio-wxt6.onrender.com/profile/edit/${profileData.id}`, {
+      const response = await fetch(`${API_URL}/profile/edit/${profileData.id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

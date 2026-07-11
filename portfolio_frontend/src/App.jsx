@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import LoginModal from './components/LoginModal';
 import ProfileModal from './components/ProfileModal';
 import ProjectModal from './components/ProjectModal';
+import { API_URL } from './config';
 import './style.css';
 import './mediaqueries.css';
 
@@ -26,8 +27,8 @@ function App() {
 
   useEffect(() => {
     Promise.all([
-      fetch('https://backend-portfolio-wxt6.onrender.com/profile/all').then(res => res.json()),
-      fetch('https://backend-portfolio-wxt6.onrender.com/proyect/all').then(res => res.json())
+      fetch(`${API_URL}/profile/all`).then(res => res.json()),
+      fetch(`${API_URL}/proyect/all`).then(res => res.json())
     ])
       .then(([perfilData, proyectosData]) => {
         if (perfilData && perfilData.length > 0) {
@@ -63,7 +64,7 @@ function App() {
     if (!window.confirm('¿Estás seguro de que deseas eliminar este proyecto?')) return;
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`https://backend-portfolio-wxt6.onrender.com/proyect/delete/${id}`, {
+      const response = await fetch(`${API_URL}/proyect/delete/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { API_URL } from '../config';
 
 const ProjectModal = ({ isOpen, onClose, projectData, onUpdate }) => {
   const [nombre, setNombre] = useState('');
@@ -50,8 +51,8 @@ const ProjectModal = ({ isOpen, onClose, projectData, onUpdate }) => {
 
     try {
       const url = isEditMode 
-        ? `https://backend-portfolio-wxt6.onrender.com/proyect/edit/${projectData.id}`
-        : 'https://backend-portfolio-wxt6.onrender.com/proyect/upload';
+        ? `${API_URL}/proyect/edit/${projectData.id}`
+        : `${API_URL}/proyect/upload`;
         
       const method = isEditMode ? 'PUT' : 'POST';
 

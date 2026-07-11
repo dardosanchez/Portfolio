@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { API_URL } from '../config';
 
 const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const [username, setUsername] = useState('');
@@ -18,7 +19,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://backend-portfolio-wxt6.onrender.com/auth/login', {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('https://backend-portfolio-wxt6.onrender.com/auth/change-password', {
+      const response = await fetch(`${API_URL}/auth/change-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
